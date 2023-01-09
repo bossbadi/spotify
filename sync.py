@@ -1,18 +1,43 @@
-# sync spotify playlists from playlists.txt
+# sync spotify playlists from playlists.json
 
+import json
 import os
+import sys
+
+
+CMD_BASE = 'python -m spotdl --output "{list-name}/{title}.{output-ext}" --save-file "%s/.sync.spotdl" sync %s'
+
+with open('playlists.json', 'r') as f:
+    PLAYLISTS = json.load(f)
+
+
+def sync_playlist(query):
+    for playlist in PLAYLISTS:
+        if playlist.startswith(query):
+            print(f'Syncing playlist "{playlist}"')
+
+            # create playlist directory
+            os.makedirs(playlist, exist_ok=True)
+
+            # create .sync.spotdl file
+            sync_filename = f'{playlist}/.sync.spotdl'
+            if not os.path.exists(sync_filename):
+                with open(sync_filename, 'w') as f:
+                    f.write('')
+
+            os.system(CMD_BASE % (playlist, PLAYLISTS[playlist]))
+            break
+    else:
+        print(f'Playlist "{query}" not found')
 
 
 def main():
-    cmd_base = 'python -m spotdl --output "{list-name}/{title}.{output-ext}" --save-file .sync.spotdl sync'
-
-    with open('playlists.txt', 'r') as f:
-        for line in f.read().splitlines():
-            if '#' in line:
-                line = line.rsplit('#', 1)[0].strip()
-            cmd_base += f' {line}'
-
-    os.system(cmd_base)
+    if len(sys.argv) > 1:
+        sync_playlist(sys.argv[1])
+    else:
+        print('Syncing all playlists')
+        for name in PLAYLISTS:
+            sync_playlist(name)
 
 
 if __name__ == '__main__':
