@@ -1,4 +1,4 @@
 @echo off
 
-python sync.py
+python sync.py %*
 pause

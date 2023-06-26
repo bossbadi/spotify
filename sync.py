@@ -6,14 +6,16 @@ import sys
 
 # this command is initially run to create the .sync.spotdl file
 CMD_BASE_INIT = (
-    'spotdl'
-    ' sync {url}'
+    'spotdl sync %s'
     ' --output "{list-name}/{title}.{output-ext}"'
-    ' --save-file "{folder}/.sync.spotdl"'
+    ' --save-file "%s/.sync.spotdl"'
 )
 
 # this command is run when the .sync.spotdl file already exists
-CMD_BASE_MAIN = 'spotdl --output "{list-name}/{title}.{output-ext}" sync "{folder}/.sync.spotdl"'
+CMD_BASE_MAIN = (
+    'spotdl sync "%s/.sync.spotdl"'
+    ' --output "{list-name}/{title}.{output-ext}"'
+)
 
 with open('playlists.json', 'r') as f:
     PLAYLISTS = json.load(f)
@@ -21,37 +23,30 @@ with open('playlists.json', 'r') as f:
 
 def sync_playlist(query):
     for playlist in PLAYLISTS:
-        if playlist.startswith(query):
-            print(f'Syncing playlist "{playlist}"')
+        if not playlist.startswith(query):
+            continue
 
-            # create playlist directory
-            os.makedirs(playlist, exist_ok=True)
+        print(f'>>> Syncing playlist "{playlist}"')
 
-            # create .sync.spotdl file
-            sync_filename = f'{playlist}/.sync.spotdl'
-            if not os.path.exists(sync_filename):
-                # with open(sync_filename, 'w') as f:
-                #     f.write('')
+        # create playlist directory
+        os.makedirs(playlist, exist_ok=True)
 
-                os.system(CMD_BASE_INIT.format(
-                    folder=playlist,
-                    url=PLAYLISTS[playlist]
-                ))
-            else:
-                os.system(CMD_BASE_MAIN.format(
-                    folder=playlist
-                ))
+        if os.path.exists(f'{playlist}/.sync.spotdl'):
+            os.system(CMD_BASE_MAIN % (playlist))
+        else:
+            os.system(CMD_BASE_INIT % (PLAYLISTS[playlist], playlist))
 
-            break
+        break
     else:
         print(f'Playlist "{query}" not found')
 
 
 def main():
     if len(sys.argv) > 1:
-        sync_playlist(sys.argv[1])
+        # join all arguments into one string separated by spaces
+        sync_playlist(' '.join(sys.argv[1:]))
     else:
-        print('Syncing all playlists')
+        print('>>> Syncing all playlists')
         for name in PLAYLISTS:
             sync_playlist(name)
 
