@@ -4,8 +4,16 @@ import json
 import os
 import sys
 
+# this command is initially run to create the .sync.spotdl file
+CMD_BASE_INIT = (
+    'spotdl'
+    ' sync {url}'
+    ' --output "{list-name}/{title}.{output-ext}"'
+    ' --save-file "{folder}/.sync.spotdl"'
+)
 
-CMD_BASE = 'python -m spotdl --output "{list-name}/{title}.{output-ext}" --save-file "%s/.sync.spotdl" sync %s'
+# this command is run when the .sync.spotdl file already exists
+CMD_BASE_MAIN = 'spotdl --output "{list-name}/{title}.{output-ext}" sync "{folder}/.sync.spotdl"'
 
 with open('playlists.json', 'r') as f:
     PLAYLISTS = json.load(f)
@@ -22,10 +30,18 @@ def sync_playlist(query):
             # create .sync.spotdl file
             sync_filename = f'{playlist}/.sync.spotdl'
             if not os.path.exists(sync_filename):
-                with open(sync_filename, 'w') as f:
-                    f.write('')
+                # with open(sync_filename, 'w') as f:
+                #     f.write('')
 
-            os.system(CMD_BASE % (playlist, PLAYLISTS[playlist]))
+                os.system(CMD_BASE_INIT.format(
+                    folder=playlist,
+                    url=PLAYLISTS[playlist]
+                ))
+            else:
+                os.system(CMD_BASE_MAIN.format(
+                    folder=playlist
+                ))
+
             break
     else:
         print(f'Playlist "{query}" not found')
