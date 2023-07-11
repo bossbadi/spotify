@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd ~/storage/music/
+python3 sync.py
