@@ -1,2 +1,2 @@
-spotdl==4.1.11
+spotdl==4.2.0
 setuptools
