@@ -34,3 +34,24 @@ sync
 ```bash
 sync SOME PLAYLIST NAME
 ```
+
+## Termux setup
+```bash
+# setup storage
+yes | termux-setup-storage
+
+# install dependencies
+pkg update
+pkg install -y python
+pkg install -y ffmpeg
+
+# download repository
+git clone "https://github.com/bossbadi/spotify"
+cd spotify/
+pip install -r requirements.txt
+chmod +x spotify  # this script is the playlist downloader
+mv spotify ..
+mv * ~/storage/music/
+cd ..
+rm -rf spotify/
+```
