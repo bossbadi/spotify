@@ -1,4 +1,5 @@
 #!/bin/bash
+# For Termux, place this file in ~/
 
 cd ~/storage/music/
-python3 sync.py $@
+python3 spotify.py $@

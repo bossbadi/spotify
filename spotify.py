@@ -43,8 +43,8 @@ def sync_playlist(query):
 
 def main():
     if len(sys.argv) > 1:
-        # join all arguments into one string separated by spaces
-        sync_playlist(' '.join(sys.argv[1:]))
+        for name in sys.argv[1:]:
+            sync_playlist(name)
     else:
         print('>>> Syncing all playlists')
         for name in PLAYLISTS:

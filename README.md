@@ -1,41 +1,59 @@
 # spotify
+
 Easily sync your Spotify playlists to a local folder
 
 ## Setup
-1. Install the requirements
-    ```bash
-    pip install -r requirements.txt
-    ```
-1. Put your Spotify playlist urls in `playlists.json` in the following format
-    ```json
-    {
-        "PLAYLIST_NAME": "PLAYLIST_URL",
-        "PLAYLIST_NAME": "PLAYLIST_URL",
-        "PLAYLIST_NAME": "PLAYLIST_URL...",
-    }
-    ```
 
-## Python usage
+Install the requirements
+
+```bash
+pip install -r requirements.txt
+```
+
+Put your Spotify playlist urls in `playlists.json` in the following format
+
+```json
+{
+  "PLAYLIST_NAME": "PLAYLIST_URL",
+  "PLAYLIST_NAME_2": "PLAYLIST_URL_2",
+  "PLAYLIST_NAME_3": "..."
+}
+```
+
+## General usage
+
 Sync all playlists from `playlists.json`
+
 ```bash
-python sync.py
+python spotify.py
 ```
 
-Sync a specific playlist from `playlists.json` (you can type the first few letters of the playlist name)
+Sync specific playlists from `playlists.json`.
+
 ```bash
-python sync.py SOME PLAYLIST NAME
+python spotify.py PLAYLIST_NAME PLAYLIST_NAME_2 ...
 ```
 
-## Batch usage
-There's also a batch script for convenience. Just replace `python sync.py` with `sync` in the above commands, e.g.
+If there are spaces in the playlist name, put the name in quotes
+
 ```bash
-sync
-```
-```bash
-sync SOME PLAYLIST NAME
+python spotify.py "PLAYLIST NAME" "PLAYLIST NAME 2" ...
 ```
 
-## Termux setup
+## Windows
+
+For Windows users, you can use the batch script. Just replace `python spotify.py` with `spotify` in the above commands:
+
+```pwsh
+spotify
+spotify PLAYLIST_NAME PLAYLIST_NAME_2 ...
+spotify "PLAYLIST NAME" "PLAYLIST NAME 2" ...
+```
+
+## Android (Termux)
+
+For Android users, download Termux (preferably from F-Droid) and run the following commands:
+
 ```bash
 # setup storage
 yes | termux-setup-storage
@@ -54,4 +72,12 @@ mv spotify ..
 mv * ~/storage/music/
 cd ..
 rm -rf spotify/
+```
+
+Then, whenever you want to sync your playlists to your phone, just open Termux and run one of the following commands:
+
+```bash
+./spotify
+./spotify PLAYLIST_NAME PLAYLIST_NAME_2 ...
+./spotify "PLAYLIST NAME" "PLAYLIST NAME 2" ...
 ```
