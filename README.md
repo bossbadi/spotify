@@ -64,14 +64,12 @@ pkg install -y python
 pkg install -y ffmpeg
 
 # download repository
-git clone "https://github.com/bossbadi/spotify"
-cd spotify/
+git clone "https://github.com/bossbadi/spotify" ~/storage/music/
+cd ~/storage/music/
 pip install -r requirements.txt
 chmod +x spotify  # this script is the playlist downloader
-mv spotify ..
-mv * ~/storage/music/
-cd ..
-rm -rf spotify/
+mv spotify ~/
+cd
 ```
 
 Then, whenever you want to sync your playlists to your phone, just open Termux and run one of the following commands:
