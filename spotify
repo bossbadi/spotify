@@ -2,4 +2,9 @@
 # For Termux, place this file in ~/
 
 cd ~/storage/music/
+
+# sync music from Spotify
 python3 spotify.py $@
+
+# refresh Android media library
+termux-media-scan -r .
