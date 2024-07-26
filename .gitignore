@@ -4,5 +4,7 @@ __pycache__/
 venv/
 
 */*
+playlists.json
 
 *.pyc
+desktop.ini
