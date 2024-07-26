@@ -1,0 +1,22 @@
+#!/bin/bash
+# Sometimes Android will show two folders with the same name, but one starts with a capital letter and the other with a lowercase letter.
+# Make a copy of the folder with the lowercase letter, delete the original folder and rename the copy to the original folder name.
+
+if [ -z "$1" ]; then
+    echo "Usage: fix-folder <folder_name>"
+    exit 1
+fi
+
+cd ~/storage/music/
+
+FOLDER="$1"
+
+if [ ! -d "$FOLDER" ]; then
+    echo "Folder not found: $FOLDER"
+    exit 1
+fi
+
+cp -r "$FOLDER" "temp-$FOLDER"
+rm -rf "$FOLDER"
+mv "temp-$FOLDER" "$FOLDER"
+echo "Done"
