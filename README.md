@@ -40,16 +40,6 @@ If there are spaces in the playlist name, put the name in quotes
 python main.py "PLAYLIST NAME" "PLAYLIST NAME 2" ...
 ```
 
-## Windows
-
-For Windows users, you can use the batch script. Just replace `python main.py` with `spotify` in the above commands:
-
-```pwsh
-spotify
-spotify PLAYLIST_NAME PLAYLIST_NAME_2 ...
-spotify "PLAYLIST NAME" "PLAYLIST NAME 2" ...
-```
-
 ## Android (Termux)
 
 For Android users, download Termux (preferably from F-Droid) and run the following commands:
@@ -67,8 +57,12 @@ pkg install -y ffmpeg
 git clone "https://github.com/bossbadi/spotify" ~/storage/music/
 cd ~/storage/music/
 pip install -r requirements.txt
-chmod +x spotify  # this script is the playlist downloader
-mv spotify ~/
+
+# activate scripts
+mkdir -p ~/.local/bin/
+cp bin/* ~/.local/bin/
+echo 'export PATH=/data/data/com.termux/files/home/.local/bin:$PATH' >> ~/.bashrc
+
 cd
 ```
 

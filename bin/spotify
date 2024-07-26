@@ -4,7 +4,7 @@
 cd ~/storage/music/
 
 # sync music from Spotify
-python3 spotify.py $@
+python3 main.py $@
 
 # refresh Android media library
 termux-media-scan -r .
