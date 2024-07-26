@@ -16,7 +16,14 @@ if [ ! -d "$FOLDER" ]; then
     exit 1
 fi
 
+echo "Copying $FOLDER to temp-$FOLDER"
 cp -r "$FOLDER" "temp-$FOLDER"
+
+echo "Deleting $FOLDER"
 rm -rf "$FOLDER"
+
+echo "Renaming temp-$FOLDER to $FOLDER"
 mv "temp-$FOLDER" "$FOLDER"
-echo "Done"
+
+# refresh Android media library
+termux-media-scan -r .
