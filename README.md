@@ -25,24 +25,24 @@ Put your Spotify playlist urls in `playlists.json` in the following format
 Sync all playlists from `playlists.json`
 
 ```bash
-python spotify.py
+python main.py
 ```
 
 Sync specific playlists from `playlists.json`.
 
 ```bash
-python spotify.py PLAYLIST_NAME PLAYLIST_NAME_2 ...
+python main.py PLAYLIST_NAME PLAYLIST_NAME_2 ...
 ```
 
 If there are spaces in the playlist name, put the name in quotes
 
 ```bash
-python spotify.py "PLAYLIST NAME" "PLAYLIST NAME 2" ...
+python main.py "PLAYLIST NAME" "PLAYLIST NAME 2" ...
 ```
 
 ## Windows
 
-For Windows users, you can use the batch script. Just replace `python spotify.py` with `spotify` in the above commands:
+For Windows users, you can use the batch script. Just replace `python main.py` with `spotify` in the above commands:
 
 ```pwsh
 spotify

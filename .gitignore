@@ -3,7 +3,8 @@
 __pycache__/
 venv/
 
-*/*
+*/
+!bin/
 playlists.json
 
 *.pyc
