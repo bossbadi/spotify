@@ -61,6 +61,7 @@ pip install -r requirements.txt
 # activate scripts
 mkdir -p ~/.local/bin/
 cp bin/* ~/.local/bin/
+chmod -R +x ~/.local/bin/
 echo 'export PATH=/data/data/com.termux/files/home/.local/bin:$PATH' >> ~/.bashrc
 
 cd
