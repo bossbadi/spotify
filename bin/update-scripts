@@ -5,5 +5,5 @@ LOCAL_BIN=~/.local/bin/
 REPO_BIN=~/storage/music/bin/
 
 mkdir -p $LOCAL_BIN
-cp $REPO_BIN/* $LOCAL_BIN
+cp -v $REPO_BIN/* $LOCAL_BIN
 chmod -R +x $LOCAL_BIN
