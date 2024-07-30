@@ -42,7 +42,7 @@ python main.py "PLAYLIST NAME" "PLAYLIST NAME 2" ...
 
 ## Android (Termux)
 
-For Android users, download Termux (preferably from F-Droid) and run the following commands:
+For Android users, download Termux, Termux:API, and run the following commands:
 
 ```bash
 # setup storage
@@ -50,6 +50,7 @@ yes | termux-setup-storage
 
 # install dependencies
 pkg update
+pkg install -y termux-api
 pkg install -y python
 pkg install -y ffmpeg
 
