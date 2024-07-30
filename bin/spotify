@@ -1,5 +1,5 @@
 #!/bin/bash
-# For Termux, place this file in ~/
+# Sync playlists from Spotify
 
 cd ~/storage/music/
 

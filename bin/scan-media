@@ -1,0 +1,4 @@
+#!/bin/bash
+# Update Android media library
+
+termux-media-scan -r ~/storage/music/
