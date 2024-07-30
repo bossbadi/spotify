@@ -1,4 +1,4 @@
 #!/bin/bash
-# Update Android media library
+# Refresh Android media library
 
 termux-media-scan -r ~/storage/music/
