@@ -7,3 +7,8 @@ REPO_BIN=~/storage/music/bin/
 mkdir -p $LOCAL_BIN
 cp -v $REPO_BIN/* $LOCAL_BIN
 chmod -R +x $LOCAL_BIN
+
+# if LOCAL_BIN is not in PATH, add it
+if [[ ":$PATH:" != *":$LOCAL_BIN:"* ]]; then
+  echo "export PATH=$LOCAL_BIN:\$PATH" >> ~/.bashrc
+fi
