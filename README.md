@@ -51,13 +51,15 @@ yes | termux-setup-storage
 # install dependencies
 pkg update
 pkg install -y termux-api
-pkg install -y python
 pkg install -y ffmpeg
+pkg install -y tur-repo
+pkg install -y python3.10
 
 # download repository
 git clone "https://github.com/bossbadi/spotify" ~/storage/music/
 cd ~/storage/music/
-pip install -r requirements.txt
+pip3.10 install --upgrade pip
+pip3.10 install -r requirements.txt
 
 # activate scripts
 mkdir -p ~/.local/bin/
