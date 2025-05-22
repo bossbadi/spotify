@@ -53,13 +53,14 @@ pkg update
 pkg install -y termux-api
 pkg install -y ffmpeg
 pkg install -y tur-repo
-pkg install -y python3.10
+pkg install -y python3.11
+pkg install -y rust
 
 # download repository
 git clone "https://github.com/bossbadi/spotify" ~/storage/music/
 cd ~/storage/music/
-pip3.10 install --upgrade pip
-pip3.10 install -r requirements.txt
+pip3.11 install --upgrade pip
+pip3.11 install -r requirements.txt
 
 # activate scripts
 mkdir -p ~/.local/bin/
