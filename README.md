@@ -50,6 +50,7 @@ yes | termux-setup-storage
 
 # install dependencies
 pkg update
+pkg install -y git
 pkg install -y termux-api
 pkg install -y ffmpeg
 pkg install -y tur-repo
