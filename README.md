@@ -51,6 +51,7 @@ yes | termux-setup-storage
 # install dependencies
 pkg update
 pkg install -y git
+pkg install -y vim
 pkg install -y termux-api
 pkg install -y ffmpeg
 pkg install -y tur-repo
@@ -60,6 +61,7 @@ pkg install -y rust
 # download repository
 git clone "https://github.com/bossbadi/spotify" ~/storage/music/
 cd ~/storage/music/
+cp playlists.json.example playlists.json
 pip3.11 install --upgrade pip
 pip3.11 install -r requirements.txt
 
