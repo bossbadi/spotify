@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd ~/music/
+
+venv/bin/python main.py $@
