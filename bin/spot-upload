@@ -1,4 +1,4 @@
 #!/bin/bash
 # Upload playlists to private cloud
 
-rsync -av --delete ~/music/ kasm.gopubby.com:~/music/
+rsync -av --delete ~/storage/music/ kasm.gopubby.com:~/music/
