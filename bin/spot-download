@@ -1,0 +1,4 @@
+#!/bin/bash
+# Download playlists from private cloud
+
+rsync -av kasm.gopubby.com:~/music/ ~/music/

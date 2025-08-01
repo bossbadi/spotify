@@ -1,0 +1,4 @@
+#!/bin/bash
+# Upload playlists to private cloud
+
+rsync -av ~/music/ kasm.gopubby.com:~/music/
