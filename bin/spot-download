@@ -4,4 +4,4 @@
 rsync -av --delete kasm.gopubby.com:~/music/ ~/storage/music/
 
 # refresh Android media library
-termux-media-scan -r .
+scan-media

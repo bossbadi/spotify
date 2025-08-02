@@ -7,4 +7,4 @@ cd ~/storage/music/
 python3.11 main.py $@
 
 # refresh Android media library
-termux-media-scan -r .
+scan-media
